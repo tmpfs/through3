@@ -5,7 +5,7 @@
   "author": "muji <noop@xpm.io>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/freeformsystems/husk.git"
+    "url": "git://github.com/freeformsystems/through.git"
   },
   "main": "lib/through",
   "engine": [
