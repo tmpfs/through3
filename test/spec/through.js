@@ -68,6 +68,17 @@ describe('through:', function() {
     done();
   });
 
+  it('should create with objectMode disabled (function)', function(done) {
+    var Stream = through(
+        function read(size){},
+        function write(chunk, encoding, cb){}
+      )
+      , stream = Stream({objectMode: false});
+    expect(stream._readableState.objectMode).to.eql(false);
+    expect(stream._writableState.objectMode).to.eql(false);
+    done();
+  });
+
   it('should create transform class w/ options', function(done) {
     expect(through.transform({})).to.be.a('function');
     done();
@@ -78,6 +89,25 @@ describe('through:', function() {
       function transform(chunk, encoding, cb){},
       function flush(cb){}
     )).to.be.a('function');
+    done();
+  });
+
+  it('should create transform class w/ constructor', function(done) {
+    function SubClass() {
+      this.id = SubClass.name;
+    }
+    SubClass.prototype.getBody = function getBody(){};
+
+    var Stream = through.transform(
+      function transform(chunk, encoding, cb){},
+      function flush(cb){},
+      {ctor: SubClass}
+    )
+      , stream = new Stream();
+    expect(stream._readableState.objectMode).to.eql(true);
+    expect(stream._writableState.objectMode).to.eql(true);
+    expect(stream.getBody).to.be.a('function');
+    expect(stream instanceof SubClass).to.eql(true);
     done();
   });
 });
