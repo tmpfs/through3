@@ -85,16 +85,18 @@ describe('through:', function() {
   });
 
   it('should create transform class w/ functions', function(done) {
-    expect(through.transform(
-      function transform(chunk, encoding, cb){},
-      function flush(cb){}
-    )).to.be.a('function');
+    var Stream = through.transform(
+        function transform(chunk, encoding, cb){},
+        function flush(cb){}
+      )
+      , stream = new Stream();
+    expect('' + stream).to.eql('[Stream:Transform]');
     done();
   });
 
   it('should create transform class w/ constructor', function(done) {
     function SubClass() {
-      this.id = SubClass.name;
+      this.id = 'objectMode: ' + this._writableState.objectMode;
     }
     SubClass.prototype.getBody = function getBody(){};
 
@@ -108,6 +110,7 @@ describe('through:', function() {
     expect(stream._writableState.objectMode).to.eql(true);
     expect(stream.getBody).to.be.a('function');
     expect(stream instanceof SubClass).to.eql(true);
+    expect('' + stream).to.eql('[SubClass:Transform] objectMode: true');
     done();
   });
 });
