@@ -1,0 +1,56 @@
+{
+  "name": "through3",
+  "description": "Extend stream classes.",
+  "version": "1.1.2",
+  "author": "muji <noop@xpm.io>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/freeformsystems/husk.git"
+  },
+  "main": "lib/through",
+  "engine": [
+    "node >= 0.12.2"
+  ],
+  "keywords": [
+    "stream",
+    "transform",
+    "duplex",
+    "readable",
+    "writable",
+    "passthrough"
+  ],
+  "devDependencies": {
+    "chai": "~2.2.0",
+    "istanbul": "~0.3.13",
+    "mocha": "~2.2.4"
+  },
+  "scripts": {
+    "docs": "npm run readme",
+    "readme": "mdp --force -v",
+    "test": "NODE_ENV=test mocha test/spec",
+    "cover": "NODE_ENV=test istanbul cover --root ./lib _mocha -- test/spec"
+  },
+  "mdp": {
+    "title": "Through",
+    "pedantic": true,
+    "include": "doc/readme",
+    "require": "lib",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/freeformsystems/through",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md"
+        ]
+      },
+      {
+        "inc": [
+          "developer.md",
+          "license.md"
+        ]
+      }
+    ]
+  }
+}
