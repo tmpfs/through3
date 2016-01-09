@@ -3,9 +3,10 @@
   "description": "Extend stream classes.",
   "version": "1.1.5",
   "author": "muji <noop@xpm.io>",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/freeformsystems/through.git"
+    "url": "git://github.com/tmpfs/through3.git"
   },
   "main": "lib/through",
   "engine": [
@@ -21,6 +22,7 @@
   ],
   "devDependencies": {
     "chai": "~2.2.0",
+    "coveralls": "~2.11.6",
     "istanbul": "~0.3.13",
     "mocha": "~2.2.4"
   },
@@ -37,7 +39,7 @@
     "require": "lib",
     "links": "links.md",
     "toc": "Table of Contents",
-    "base": "https://github.com/freeformsystems/through",
+    "base": "https://github.com/tmpfs/through3",
     "partial": [
       {
         "inc": [
