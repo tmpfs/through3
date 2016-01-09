@@ -19,7 +19,7 @@ Through
 
 Stream extends library tracking latest stable [node](http://nodejs.org) with no external dependencies.
 
-Requires [node](http://nodejs.org) and [npm](http://www.npmjs.org).
+Requires [node](http://nodejs.org) (>=0.11) and [npm](http://www.npmjs.org).
 
 ## Install
 

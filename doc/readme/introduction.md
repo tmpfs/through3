@@ -4,4 +4,4 @@
 
 Stream extends library tracking latest stable [node][] with no external dependencies.
 
-Requires [node][] and [npm][].
+Requires [node][] (>=0.11) and [npm][].
