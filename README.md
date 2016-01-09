@@ -13,6 +13,10 @@ Table of Contents
 Through
 =======
 
+[<img src="https://travis-ci.org/tmpfs/through3.svg" alt="Build Status">](https://travis-ci.org/tmpfs/through3)
+[<img src="http://img.shields.io/npm/v/through3.svg" alt="npm version">](https://npmjs.org/package/through3)
+[<img src="https://coveralls.io/repos/tmpfs/through3/badge.svg?branch=master&service=github&v=1" alt="Coverage Status">](https://coveralls.io/github/tmpfs/through3?branch=master).
+
 Stream extends library tracking latest stable [node](http://nodejs.org) with no external dependencies.
 
 Requires [node](http://nodejs.org) and [npm](http://www.npmjs.org).
