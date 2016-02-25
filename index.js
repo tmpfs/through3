@@ -8,6 +8,11 @@ var util = require('util')
 
 /**
  *  Utility to find the options object argument.
+ *
+ *  @private
+ *  @function options
+ *  @param {Array} args The arguments list.
+ *  @returns An options object when available.
  */
 function options(args) {
   var i = args.length - 1, opts;
@@ -22,8 +27,16 @@ function options(args) {
 
 /**
  *  Creates a stream subclass.
+ *
+ *  @function extend
+ *
+ *  @param type The super class.
+ *  @param ctor Constructor for the subclass.
+ *  @param opts Default constructor options.
+ *
+ *  @returns a stream subclass.
  */
-function streamable(type, ctor, opts) {
+function extend(type, ctor, opts) {
   opts = opts || {};
 
   function Stream() {
@@ -99,7 +112,7 @@ function streamable(type, ctor, opts) {
 function transform(fn, flush, opts) {
   var type;
   opts = options(arguments) || {};
-  type = streamable(Transform, opts.ctor, opts);
+  type = extend(Transform, opts.ctor, opts);
   if(typeof fn === 'function') {
     type.prototype._transform = fn;
   }
@@ -111,6 +124,12 @@ function transform(fn, flush, opts) {
 
 /**
  *  Creates a passthrough, read, write or duplex stream subclass.
+ *
+ *  @param {Function} read The read side of the stream.
+ *  @param {Function} write The write side of the stream.
+ *  @param {Object} opts Options to use when subclassing.
+ *
+ *  @returns a stream subclass.
  */
 function through(read, write, opts) {
   opts = options(arguments);
@@ -119,15 +138,15 @@ function through(read, write, opts) {
   read = typeof read === 'function' ? read : null;
   write = typeof write === 'function' ? write : null;
   if(!read && !write) {
-    type = streamable(PassThrough, ctor, opts);
+    type = extend(PassThrough, ctor, opts);
   }else if(read && !write) {
-    type = streamable(Readable, ctor, opts);
+    type = extend(Readable, ctor, opts);
     type.prototype._read = read;
   }else if(!read && write) {
-    type = streamable(Writable, ctor, opts);
+    type = extend(Writable, ctor, opts);
     type.prototype._write = write;
   }else{
-    type = streamable(Duplex, ctor, opts);
+    type = extend(Duplex, ctor, opts);
     type.prototype._read = read;
     type.prototype._write = write;
   }
@@ -139,6 +158,10 @@ function through(read, write, opts) {
  *  input and write on end.
  *
  *  Useful when you need all the data before operations can begin.
+ *
+ *  @function cork
+ *
+ *  @returns stream class that buffers the input.
  */
 function cork() {
   return through({ctor: function Buffer(){this.cork()}});
@@ -146,12 +169,18 @@ function cork() {
 
 /**
  *  Get a pass through stream class.
+ *
+ *  @function passthrough
+ *
+ *  @param {Object} opts Stream construct options.
+ *
+ *  @return a stream that passes through data.
  */
 function passthrough(opts) {
   return through(opts);
 }
 
-through.extend = streamable;
+through.extend = extend;
 through.transform = transform;
 through.cork = cork;
 through.passthrough = passthrough;
