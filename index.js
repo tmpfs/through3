@@ -114,6 +114,13 @@ function extend(type, ctor, opts) {
 
 /**
  *  Creates a transform stream subclass.
+ *
+ *  @function transform
+ *  @param {Function} fn The transform function.
+ *  @param {Function} [flush[ A flush function.
+ *  @param {Object} [opts] Default constructor options.
+ *
+ *  @returns transform stream subclass.
  */
 function transform(fn, flush, opts) {
   var type;

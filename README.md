@@ -6,6 +6,7 @@ Table of Contents
   * [API](#api)
     * [through3](#through3)
       * [extend](#extend)
+      * [transform](#transform)
       * [cork](#cork)
       * [passthrough](#passthrough)
   * [Developer](#developer)
@@ -49,6 +50,18 @@ Creates a stream subclass.
 * `type` The super class.
 * `ctor` Constructor for the subclass.
 * `opts` Default constructor options.
+
+#### transform
+
+```javascript
+transform(fn, [, opts])
+```
+
+Creates a transform stream subclass.
+
+* `fn` Function The transform function.
+* `` Function 
+* `opts` Object Default constructor options.
 
 #### cork
 
