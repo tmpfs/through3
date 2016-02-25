@@ -27,6 +27,7 @@
     "mocha": "~2.2.4"
   },
   "scripts": {
+    "lint": "jshint . && jscs .",
     "docs": "npm run readme",
     "readme": "mdp --force -v",
     "test": "NODE_ENV=test mocha test/spec",

@@ -27,28 +27,28 @@ describe('through:', function() {
   });
 
   it('should create readable class', function(done) {
-    expect(through(function read(size){})).to.be.a('function');
+    expect(through(function read(){})).to.be.a('function');
     done();
   });
 
   it('should create writable class', function(done) {
-    expect(through(null, function write(chunk, encoding, cb){}))
+    expect(through(null, function write(){}))
       .to.be.a('function');
     done();
   });
 
   it('should create duplex class', function(done) {
     expect(through(
-      function read(size){},
-      function write(chunk, encoding, cb){}
+      function read(){},
+      function write(){}
     )).to.be.a('function');
     done();
   });
 
   it('should create with objectMode disabled (through)', function(done) {
     var Stream = through(
-        function read(size){},
-        function write(chunk, encoding, cb){},
+        function read(){},
+        function write(){},
         {objectMode: false}
       )
       , stream = new Stream();
@@ -59,8 +59,8 @@ describe('through:', function() {
 
   it('should create with objectMode disabled (constructor)', function(done) {
     var Stream = through(
-        function read(size){},
-        function write(chunk, encoding, cb){}
+        function read(){},
+        function write(){}
       )
       , stream = new Stream({objectMode: false});
     expect(stream._readableState.objectMode).to.eql(false);
@@ -70,8 +70,8 @@ describe('through:', function() {
 
   it('should create with objectMode disabled (function)', function(done) {
     var Stream = through(
-        function read(size){},
-        function write(chunk, encoding, cb){}
+        function read(){},
+        function write(){}
       )
       , stream = Stream({objectMode: false});
     expect(stream._readableState.objectMode).to.eql(false);
@@ -86,8 +86,8 @@ describe('through:', function() {
 
   it('should create transform class w/ functions', function(done) {
     var Stream = through.transform(
-        function transform(chunk, encoding, cb){},
-        function flush(cb){}
+        function transform(){},
+        function flush(){}
       )
       , stream = new Stream();
     expect('' + stream).to.eql('[Stream:Transform]');
@@ -101,8 +101,8 @@ describe('through:', function() {
     SubClass.prototype.getBody = function getBody(){};
 
     var Stream = through.transform(
-      function transform(chunk, encoding, cb){},
-      function flush(cb){},
+      function transform(){},
+      function flush(){},
       {ctor: SubClass}
     )
       , stream = new Stream();
