@@ -7,6 +7,12 @@ var util = require('util')
   , Transform = stream.Transform;
 
 /**
+ *  Utilities for creating stream subclass functions.
+ *
+ *  @module through3
+ */
+
+/**
  *  Utility to find the options object argument.
  *
  *  @private

@@ -4,9 +4,10 @@ Table of Contents
 * [Through](#through)
   * [Install](#install)
   * [API](#api)
-    * [extend](#extend)
-    * [cork](#cork)
-    * [passthrough](#passthrough)
+    * [through3](#through3)
+      * [extend](#extend)
+      * [cork](#cork)
+      * [passthrough](#passthrough)
   * [Developer](#developer)
     * [Test](#test)
     * [Cover](#cover)
@@ -33,7 +34,11 @@ npm i through3 --save
 
 ## API
 
-### extend
+### through3
+
+Utilities for creating stream subclass functions.
+
+#### extend
 
 ```javascript
 extend(type, ctor, opts)
@@ -45,7 +50,7 @@ Creates a stream subclass.
 * `ctor` Constructor for the subclass.
 * `opts` Default constructor options.
 
-### cork
+#### cork
 
 ```javascript
 cork()
@@ -56,7 +61,7 @@ input and write on end.
 
 Useful when you need all the data before operations can begin.
 
-### passthrough
+#### passthrough
 
 ```javascript
 passthrough(opts)
