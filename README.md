@@ -42,25 +42,25 @@ Utilities for creating stream subclass functions.
 #### extend
 
 ```javascript
-extend(type, ctor, opts)
+extend(type, ctor[, opts])
 ```
 
 Creates a stream subclass.
 
-* `type` The super class.
-* `ctor` Constructor for the subclass.
-* `opts` Default constructor options.
+* `type` Function The super class.
+* `ctor` Function Constructor for the subclass.
+* `opts` Object Default constructor options.
 
 #### transform
 
 ```javascript
-transform(fn, [, opts])
+transform(fn[, flush][, opts])
 ```
 
 Creates a transform stream subclass.
 
 * `fn` Function The transform function.
-* `` Function 
+* `flush` Function A flush function.
 * `opts` Object Default constructor options.
 
 #### cork

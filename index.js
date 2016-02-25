@@ -36,9 +36,9 @@ function options(args) {
  *
  *  @function extend
  *
- *  @param type The super class.
- *  @param ctor Constructor for the subclass.
- *  @param opts Default constructor options.
+ *  @param {Function} type The super class.
+ *  @param {Function} ctor Constructor for the subclass.
+ *  @param {Object} [opts] Default constructor options.
  *
  *  @returns a stream subclass.
  */
@@ -117,7 +117,7 @@ function extend(type, ctor, opts) {
  *
  *  @function transform
  *  @param {Function} fn The transform function.
- *  @param {Function} [flush[ A flush function.
+ *  @param {Function} [flush] A flush function.
  *  @param {Object} [opts] Default constructor options.
  *
  *  @returns transform stream subclass.
