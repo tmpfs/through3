@@ -30,7 +30,7 @@
     "docs": "npm run readme",
     "readme": "mdp --force -v",
     "test": "NODE_ENV=test mocha test/spec",
-    "cover": "NODE_ENV=test istanbul cover --root ./lib _mocha -- test/spec",
+    "cover": "NODE_ENV=test istanbul cover -i index.js _mocha -- test/spec",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "mdp": {
