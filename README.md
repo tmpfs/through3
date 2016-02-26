@@ -47,6 +47,8 @@ extend(type, ctor[, opts])
 
 Creates a stream subclass.
 
+Returns a stream subclass.
+
 * `type` Function The super class.
 * `ctor` Function Constructor for the subclass.
 * `opts` Object Default constructor options.
@@ -58,6 +60,8 @@ transform(fn[, flush][, opts])
 ```
 
 Creates a transform stream subclass.
+
+Returns transform stream subclass.
 
 * `fn` Function The transform function.
 * `flush` Function A flush function.
@@ -73,6 +77,8 @@ Creates a pass through stream subclass that calls cork to buffer all
 input and write on end.
 
 Useful when you need all the data before operations can begin.
+
+Returns stream class that buffers the input.
 
 #### passthrough
 

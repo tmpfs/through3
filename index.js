@@ -187,7 +187,7 @@ function cork() {
  *
  *  @param {Object} opts Stream construct options.
  *
- *  @return a stream that passes through data.
+ *  @returns a stream that passes through data.
  */
 function passthrough(opts) {
   return through(opts);
