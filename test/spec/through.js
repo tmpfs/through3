@@ -45,6 +45,39 @@ describe('through:', function() {
     done();
   });
 
+  it('should create with highWaterMark (through)', function(done) {
+    var Stream = through(
+        function read(){},
+        function write(){},
+        {highWaterMark: 1024}
+      )
+      , stream = new Stream();
+    expect(stream._readableState.highWaterMark).to.eql(1024);
+    expect(stream._writableState.highWaterMark).to.eql(1024);
+    done();
+  });
+
+  it('should create with highWaterMark read-only (through)', function(done) {
+    var Stream = through(
+        function read(){},
+        {highWaterMark: 1024}
+      )
+      , stream = new Stream();
+    expect(stream._readableState.highWaterMark).to.eql(1024);
+    done();
+  });
+
+  it('should create with highWaterMark write-only (through)', function(done) {
+    var Stream = through(
+        null,
+        function write(){},
+        {highWaterMark: 1024}
+      )
+      , stream = new Stream();
+    expect(stream._writableState.highWaterMark).to.eql(1024);
+    done();
+  });
+
   it('should create with objectMode disabled (through)', function(done) {
     var Stream = through(
         function read(){},

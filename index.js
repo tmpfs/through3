@@ -68,6 +68,15 @@ function extend(type, ctor, opts) {
     if(opts.objectMode && this._readableState) {
       this._readableState.objectMode = true;
     }
+
+    if(opts.highWaterMark !== undefined) {
+      if(this._writableState) {
+        this._writableState.highWaterMark = opts.highWaterMark;
+      }
+      if(this._readableState) {
+        this._readableState.highWaterMark = opts.highWaterMark;
+      }
+    }
   }
 
   util.inherits(Stream, type);
