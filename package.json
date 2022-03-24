@@ -1,14 +1,14 @@
 {
   "name": "through3",
   "description": "Extend stream classes.",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "author": "muji <noop@xpm.io>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/tmpfs/through3.git"
   },
-  "main": "lib/through",
+  "main": "index.js",
   "engine": [
     "node >= 0.12.2"
   ],
